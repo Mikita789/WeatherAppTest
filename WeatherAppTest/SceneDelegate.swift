@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let winSc = (scene as? UIWindowScene) else { return }
-        var window = UIWindow(windowScene: winSc)
+        let window = UIWindow(windowScene: winSc)
         let navController = UINavigationController()
         let vc = SelecCityAndInfoViewController()
         navController.viewControllers = [vc]
