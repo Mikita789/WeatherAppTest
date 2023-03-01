@@ -20,8 +20,8 @@ struct CurrentWeather:Codable{
         case "снег" : return "snowflake"
         case "дождь" : return "cloud.rain.fill"
         case "гроза" : return "cloud.bolt.rain.fill"
-        case "облачно с прояснениями" : return "cloud.sun.fill"
-        
+        case "облачно с прояснениями" : return "cloud.sun"
+        case "переменная облачность" : return "cloud.sun.fill"
         default: return "pawprint"
         }
     }

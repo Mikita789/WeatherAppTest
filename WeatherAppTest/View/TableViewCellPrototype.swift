@@ -28,13 +28,14 @@ class TableViewCellPrototype: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func updateInfo(item:CurrentWeather){
-        nameCityLabel.text = item.name
-        tempCityLabel.text = "\(item.temp)"
-        feelsLikeCityLabel.text = "\(item.feelsLike)"
-        imViewWeather.image = UIImage(systemName: item.im)
+    //MARK: update oll label
+    func updateInfo(item:CityInfo){
+        nameCityLabel.text = item.nameCity
+        tempCityLabel.text = "\(item.tempCity)"
+        feelsLikeCityLabel.text = "\(item.feelsLikeTempCity)"
+        imViewWeather.image = UIImage(systemName: item.imageName ?? "ant.fill")
     }
+    //MARK: settings Image View
     private func imViewWeatherSettings(){
         imViewWeather = UIImageView()
         contentView.addSubview(imViewWeather)
@@ -49,7 +50,7 @@ class TableViewCellPrototype: UITableViewCell {
         imViewWeather.tintColor = .black
         imViewWeather.contentMode = .scaleAspectFit
     }
-    
+    //MARK: settings name city label
     private func nameCityLabelSettings(){
         nameCityLabel = UILabel()
         contentView.addSubview(nameCityLabel)
@@ -65,7 +66,7 @@ class TableViewCellPrototype: UITableViewCell {
         nameCityLabel.textAlignment = .center
         
     }
-    
+    //MARK: settings temp city label
     private func tempCityLabelSettings(){
         tempCityLabel = UILabel()
         contentView.addSubview(tempCityLabel)
@@ -81,7 +82,7 @@ class TableViewCellPrototype: UITableViewCell {
         tempCityLabel.textAlignment = .center
         
     }
-    
+    //MARK: settings feels temp city label
     private func feelsLikeCityLabelSettings(){
         feelsLikeCityLabel = UILabel()
         contentView.addSubview(feelsLikeCityLabel)
