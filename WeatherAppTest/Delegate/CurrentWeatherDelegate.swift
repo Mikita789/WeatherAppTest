@@ -11,3 +11,7 @@ import Foundation
 protocol CurrentWeatherDelegate:AnyObject{
     func appendCurrenWeatherModel(item: CurrentWeather)
 }
+
+protocol CurrentWeatherLocationDelegate:AnyObject{
+    func appendCurrenWeatherLocationModel(item: CurrentWeather)
+}

@@ -7,13 +7,19 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 
 class SelecCityAndInfoViewController: UIViewController,CurrentWeatherDelegate {
+    
+    
     var tableView:UITableView!
     var stackViewLabel:UIStackView!
     var cityName = [CurrentWeather]()
     var netw = NetworkManager()
+    var netwLoc = NetworkManagerLocation()
+    
     var data = [CityInfo]()
+    let location = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +27,8 @@ class SelecCityAndInfoViewController: UIViewController,CurrentWeatherDelegate {
         tableViewSettings()
         addButtonNavC()
         netw.delegate = self
-        tableView.backgroundColor = #colorLiteral(red: 0.8806360364, green: 0.9527737498, blue: 0.9360817671, alpha: 1)
+        netwLoc.delegate = self
+        tableView.backgroundColor = #colorLiteral(red: 0.8806360364, green: 0.9527737498, blue: 0.9360817671, alpha: 0.5)
         
         
     }
@@ -97,6 +104,18 @@ class SelecCityAndInfoViewController: UIViewController,CurrentWeatherDelegate {
         }
     }
     
+    func appendCurrenWeatherLocationModel(item: CurrentWeather) {
+        let copy = data.filter{$0.nameCity == item.name}
+        if copy.count == 0{
+            DispatchQueue.main.async {
+                self.saveData(item: item)
+                self.tableView.reloadData()
+            }
+        }else{
+            updateInfo(target: item)
+        }
+    }
+    
     //MARK: update Info func
     private func updateInfo(target:CurrentWeather){
         for city in data{
@@ -134,10 +153,25 @@ class SelecCityAndInfoViewController: UIViewController,CurrentWeatherDelegate {
     //MARK: settings button NavController
     private func addButtonNavC(){
         let barButton  = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButton))
+        barButton.tintColor = .black
+        let locationButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(getLocation))
+        locationButton.tintColor = .black
         let leftButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(leftButtonNavigControllerAction))
-        navigationItem.rightBarButtonItem = barButton
+        leftButton.tintColor = .black
+        //navigationItem.rightBarButtonItem = barButton
         navigationItem.leftBarButtonItem = leftButton
+        navigationItem.rightBarButtonItems = [barButton, locationButton]
     }
+    //MARK: get location func
+    @objc func getLocation(){
+        location.requestWhenInUseAuthorization()
+        //guard CLLocationManager.locationServicesEnabled() else { return }
+        location.delegate = self
+        location.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        location.pausesLocationUpdatesAutomatically = false
+        location.startUpdatingLocation()
+    }
+    
     //MARK: search button action
     @objc func leftButtonNavigControllerAction(){
         for item in data{
@@ -166,6 +200,11 @@ class SelecCityAndInfoViewController: UIViewController,CurrentWeatherDelegate {
 extension SelecCityAndInfoViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(self.view.bounds.height * 0.06)
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectRow = tableView.cellForRow(at: indexPath)
+        selectRow?.selectionStyle = .blue
+        
     }
     
 }
@@ -208,5 +247,15 @@ extension SelecCityAndInfoViewController: UITableViewDataSource{
     }
     
     
+}
+//MARK: Location delegate 
+extension SelecCityAndInfoViewController:CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let currentLocation = locations.last else { return }
+        let longitudeStr = "\(currentLocation.coordinate.longitude)"
+        let latitudeStr = "\(currentLocation.coordinate.latitude)"
+        netwLoc.currentWeatherDate(lat: latitudeStr, long: longitudeStr)
+        location.stopUpdatingLocation()
+    }
 }
 

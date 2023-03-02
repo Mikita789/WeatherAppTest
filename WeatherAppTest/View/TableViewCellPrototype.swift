@@ -18,13 +18,13 @@ class TableViewCellPrototype: UITableViewCell {
         nameCityLabelSettings()
         tempCityLabelSettings()
         feelsLikeCityLabelSettings()
-        contentView.backgroundColor = #colorLiteral(red: 0.8806360364, green: 0.9527737498, blue: 0.9360817671, alpha: 1)
+        contentView.backgroundColor =  #colorLiteral(red: 0.8806360364, green: 0.9527737498, blue: 0.9360817671, alpha: 0.5)
         imViewWeatherSettings()
-        
+        self.selectionStyle = .blue
         
         
     }
-    
+    //MARK: refresh ctyle row
     override func prepareForReuse() {
         super.prepareForReuse()
         nameCityLabel.font = .systemFont(ofSize: 15)

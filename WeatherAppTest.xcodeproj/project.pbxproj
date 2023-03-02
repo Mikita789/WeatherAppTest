@@ -19,6 +19,7 @@
 		38C4CE9E29ACC8F9001BA0A5 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C4CE9D29ACC8F9001BA0A5 /* DataModel.swift */; };
 		38C4CEA029ACC911001BA0A5 /* CurrentWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C4CE9F29ACC911001BA0A5 /* CurrentWeatherModel.swift */; };
 		38C4CEA529ACD29D001BA0A5 /* CurrentWeatherDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C4CEA429ACD29D001BA0A5 /* CurrentWeatherDelegate.swift */; };
+		38C4CECB29B0C82D001BA0A5 /* WeatherDataLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C4CECA29B0C82D001BA0A5 /* WeatherDataLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		38C4CE9F29ACC911001BA0A5 /* CurrentWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherModel.swift; sourceTree = "<group>"; };
 		38C4CEA429ACD29D001BA0A5 /* CurrentWeatherDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherDelegate.swift; sourceTree = "<group>"; };
 		38C4CEA629ADD91A001BA0A5 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		38C4CECA29B0C82D001BA0A5 /* WeatherDataLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				38C4CE9A29ACC742001BA0A5 /* NetwManager.swift */,
+				38C4CECA29B0C82D001BA0A5 /* WeatherDataLocation.swift */,
 				38C4CE9D29ACC8F9001BA0A5 /* DataModel.swift */,
 				38C4CE9F29ACC911001BA0A5 /* CurrentWeatherModel.swift */,
 			);
@@ -197,6 +200,7 @@
 				38C4CE9929ACB617001BA0A5 /* TableViewCellPrototype.swift in Sources */,
 				38C4CEA529ACD29D001BA0A5 /* CurrentWeatherDelegate.swift in Sources */,
 				38C4CE9B29ACC742001BA0A5 /* NetwManager.swift in Sources */,
+				38C4CECB29B0C82D001BA0A5 /* WeatherDataLocation.swift in Sources */,
 				38C4CE8229ACB3B4001BA0A5 /* AppDelegate.swift in Sources */,
 				38C4CE8429ACB3B4001BA0A5 /* SceneDelegate.swift in Sources */,
 			);
