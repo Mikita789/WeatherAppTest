@@ -24,7 +24,6 @@ class SelecCityAndInfoViewController: UIViewController,CurrentWeatherDelegate {
         tableView.backgroundColor = #colorLiteral(red: 0.8806360364, green: 0.9527737498, blue: 0.9360817671, alpha: 1)
         
         
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -125,6 +124,9 @@ class SelecCityAndInfoViewController: UIViewController,CurrentWeatherDelegate {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         tableView.register(TableViewCellPrototype.self, forCellReuseIdentifier: "myCell")
+        
+        tableView.separatorColor = .black
+        
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -151,20 +153,19 @@ class SelecCityAndInfoViewController: UIViewController,CurrentWeatherDelegate {
             self.netw.currentWeatherDate(cityName: cityName)
         }
         let actionCancel = UIAlertAction(title: "Cancel", style: .destructive)
-        alert.addTextField(){_ in
-            let teftField = UITextField()
-        }
+        alert.addTextField()
         alert.addAction(actionOK)
         alert.addAction(actionCancel)
         present(alert, animated: true)
     }
 
 
+
 }
 //MARK: - TableView Delegate
 extension SelecCityAndInfoViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(self.view.bounds.height * 0.07)
+        return CGFloat(self.view.bounds.height * 0.06)
     }
     
 }
@@ -183,16 +184,21 @@ extension SelecCityAndInfoViewController: UITableViewDataSource{
             cell.tempCityLabel.font = .boldSystemFont(ofSize: 20)
             cell.feelsLikeCityLabel.text = "Feels"
             cell.feelsLikeCityLabel.font = .boldSystemFont(ofSize: 20)
+            cell.imViewWeather.image = UIImage(systemName: "sun.min.fill")
         }else{
+            
             let currentModel = data[indexPath.row - 1]
             cell.updateInfo(item: currentModel)
         }
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        .delete
+        if indexPath.row == 0{
+            return.none
+        }else{
+            return .delete
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

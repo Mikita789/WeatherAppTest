@@ -71,8 +71,8 @@
 			children = (
 				38C4CEA329ACD280001BA0A5 /* Delegate */,
 				38C4CEA129ACCDB7001BA0A5 /* Applications */,
+				38C4CE9C29ACC8AF001BA0A5 /* Model */,
 				38C4CEA229ACCDDE001BA0A5 /* View */,
-				38C4CE9C29ACC8AF001BA0A5 /* Network */,
 				38C4CE8729ACB3B4001BA0A5 /* Main.storyboard */,
 				38C4CE8D29ACB3B5001BA0A5 /* Assets.xcassets */,
 				38C4CE8F29ACB3B5001BA0A5 /* LaunchScreen.storyboard */,
@@ -82,14 +82,14 @@
 			path = WeatherAppTest;
 			sourceTree = "<group>";
 		};
-		38C4CE9C29ACC8AF001BA0A5 /* Network */ = {
+		38C4CE9C29ACC8AF001BA0A5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				38C4CE9A29ACC742001BA0A5 /* NetwManager.swift */,
 				38C4CE9D29ACC8F9001BA0A5 /* DataModel.swift */,
 				38C4CE9F29ACC911001BA0A5 /* CurrentWeatherModel.swift */,
 			);
-			path = Network;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		38C4CEA129ACCDB7001BA0A5 /* Applications */ = {

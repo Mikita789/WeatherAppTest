@@ -25,14 +25,21 @@ class TableViewCellPrototype: UITableViewCell {
         
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        nameCityLabel.font = .systemFont(ofSize: 15)
+        tempCityLabel.font = .systemFont(ofSize: 15)
+        feelsLikeCityLabel.font = .systemFont(ofSize: 15)
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     //MARK: update oll label
     func updateInfo(item:CityInfo){
         nameCityLabel.text = item.nameCity
-        tempCityLabel.text = "\(item.tempCity)"
-        feelsLikeCityLabel.text = "\(item.feelsLikeTempCity)"
+        tempCityLabel.text = "\(item.tempCity) Cº"
+        feelsLikeCityLabel.text = "\(item.feelsLikeTempCity) Cº"
         imViewWeather.image = UIImage(systemName: item.imageName ?? "ant.fill")
     }
     //MARK: settings Image View

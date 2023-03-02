@@ -8,6 +8,6 @@
 import Foundation
 
 
-protocol CurrentWeatherDelegate{
+protocol CurrentWeatherDelegate:AnyObject{
     func appendCurrenWeatherModel(item: CurrentWeather)
 }

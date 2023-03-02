@@ -10,7 +10,7 @@ import Foundation
 
 
 struct NetworkManager{
-    var delegate:CurrentWeatherDelegate? = nil
+    weak var delegate:CurrentWeatherDelegate? = nil
     
     func currentWeatherDate(cityName:String){
         var urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&lang=ru&units=metric&appid=a9a0b74f3e9fa3791aba58556db76d6f"
