@@ -154,11 +154,15 @@ class SelecCityAndInfoViewController: UIViewController,CurrentWeatherDelegate {
     private func addButtonNavC(){
         let barButton  = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButton))
         barButton.tintColor = .black
-        let locationButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(getLocation))
+        
+        var prototypeButton = UIButton()
+        prototypeButton.setImage(UIImage(systemName: "network"), for: .normal)
+        prototypeButton.tintColor = .black
+        prototypeButton.addTarget(self, action: #selector(getLocation), for: .touchUpInside)
+        let locationButton = UIBarButtonItem(customView: prototypeButton)
         locationButton.tintColor = .black
         let leftButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(leftButtonNavigControllerAction))
         leftButton.tintColor = .black
-        //navigationItem.rightBarButtonItem = barButton
         navigationItem.leftBarButtonItem = leftButton
         navigationItem.rightBarButtonItems = [barButton, locationButton]
     }
@@ -248,7 +252,7 @@ extension SelecCityAndInfoViewController: UITableViewDataSource{
     
     
 }
-//MARK: Location delegate 
+//MARK: Location delegate
 extension SelecCityAndInfoViewController:CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let currentLocation = locations.last else { return }
